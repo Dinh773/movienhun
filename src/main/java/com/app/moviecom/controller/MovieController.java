@@ -2,7 +2,6 @@ package com.app.moviecom.controller;
 
 import com.app.moviecom.models.Movie;
 import com.app.moviecom.services.MovieService;
-import info.movito.themoviedbapi.tools.TmdbException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

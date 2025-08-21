@@ -2,13 +2,9 @@ package com.app.moviecom.services;
 
 import com.app.moviecom.models.Movie;
 import com.app.moviecom.repository.MovieRepository;
-import info.movito.themoviedbapi.TmdbApi;
-import info.movito.themoviedbapi.TmdbMovies;
-import info.movito.themoviedbapi.tools.TmdbException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class MovieService {
