@@ -4,10 +4,7 @@ import com.app.moviecom.models.Movie;
 import com.app.moviecom.services.MovieService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Comparator;
 import java.util.List;
@@ -38,6 +35,12 @@ public class MovieController {
         movieService.deleteMovie(id);
         return "redirect:/";
     }
-
+    @PostMapping("/{id}/edit")
+    public String editMovie(@PathVariable Integer id,@RequestParam String title,
+                            @RequestParam String comment,
+                            @RequestParam double rating) {
+        movieService.editMovie(id, title, comment, rating);
+        return "redirect:/";
+    }
 
 }

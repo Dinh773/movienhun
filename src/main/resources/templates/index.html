@@ -26,7 +26,7 @@
 
                     <div class="mb-3">
                         <label for="rating" class="form-label">Rating (?/100)</label>
-                        <input class="form-control" type="number" name="rating" id="rating" placeholder="Rating ?" min="0" max="100" required>
+                        <input class="form-control" type="number" name="rating" id="rating" placeholder="Rating ?" min="0" max="100" step="1" required>
                     </div>
 
                     <div class="mb-3">
@@ -62,9 +62,27 @@
                                 <td th:text="${movie.rating}"></td>
                                 <td class="text-break" th:text="${movie.comment}"></td>
                                 <td>
+                                    <button class="btn btn-outline-warning btn-sm" th:onclick="'document.getElementById(\'edit-form-' + ${movie.id} + '\').style.display=\'table-row\''">Edit</button>
+                                </td>
+                                <td>
                                     <a th:href="@{/{id}/delete(id=${movie.id})}" class="btn btn-outline-danger btn-sm">Delete</a>
                                 </td>
                             </tr>
+                            <tr th:id="'edit-form-' + ${movie.id}" style="display:none;">
+                                <td colspan="5">
+                                    <form th:action="@{'/' + ${movie.id} + '/edit'}" method="post" class="d-flex gap-2">
+                                        <input type="text" name="title" th:value="${movie.title}" class="form-control form-control-sm" placeholder="Title" required/>
+                                        <input type="number" name="rating" th:value="${movie.rating}" class="form-control form-control-sm" placeholder="Rating" min="0" max="100" step="1" required/>
+                                        <input type="text" name="comment" th:value="${movie.comment}" class="form-control form-control-sm" placeholder="Comment" required/>
+                                        <button type="submit" class="btn btn-outline-success btn-sm">Save</button>
+                                        <button type="button" class="btn btn-outline-secondary btn-sm"
+                                                th:onclick="'document.getElementById(\'edit-form-' + ${movie.id} + '\').style.display=\'none\''">
+                                            Cancel
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+
                         </th:block>
                     </tbody>
                 </table>

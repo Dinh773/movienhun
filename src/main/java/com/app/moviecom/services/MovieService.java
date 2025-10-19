@@ -30,4 +30,13 @@ public class MovieService {
     public void deleteMovie(Integer id) {
         movieRepository.deleteById(id);
     }
+
+    public void editMovie(Integer id, String title, String comment, double rating) {
+        Movie movie = movieRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Film non trouvé"));
+        movie.setTitle(title);
+        movie.setComment(comment);
+        movie.setRating(rating);
+        movieRepository.save(movie);
+    }
 }
